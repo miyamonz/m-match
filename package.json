@@ -1,6 +1,6 @@
 {
   "name": "m-match",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The modular type safe pattern match",
   "author": "miyamonz",
   "license": "MIT",
