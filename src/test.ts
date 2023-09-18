@@ -1,14 +1,6 @@
-import { match, when, exhuastive, reduceMatchers } from "./";
-import type {
-  MatcherArrToTuples,
-  Matcher,
-  MergeTuple,
-  MatchResult,
-  GuardedType,
-  FilterTuple,
-  TupleToMatcher,
-  Matchers,
-} from ".";
+import { match, when, exhuastive, reduceMatchers } from ".";
+import type { Matcher, MatchResult, Matchers } from ".";
+import { GuardedType } from "./typeUtil";
 
 // ------test util---------------------
 
@@ -21,21 +13,6 @@ type Equal<a, b> = (<T>() => T extends a ? 1 : 2) extends <T>() => T extends b
 
 //----------
 
-// test
-type __ = [
-  Expect<
-    Equal<
-      MatcherArrToTuples<
-        [
-          Matcher<(v: unknown) => v is 1, (v: 1) => 100>,
-          Matcher<(v: unknown) => v is 2, (v: 2) => 200>
-        ]
-      >,
-      [[1, 100], [2, 200]]
-    >
-  >,
-  Expect<Equal<MergeTuple<[[1, 100], [2, 200]]>, [1 | 2, 100 | 200]>>
-];
 // how to use -----------------------------------------
 const is =
   <const N extends unknown>(n: N) =>
@@ -49,8 +26,8 @@ const result = match(
   when(is(2), (v) => 200 as const),
   reduceMatchers(
     when(is("a"), (v) => "aaa" as const),
-    when(is("b"), (v) => "bbb" as const)
-  )
+    when(is("b"), (v) => "bbb" as const),
+  ),
 );
 switch (result.type) {
   //^?
@@ -80,7 +57,7 @@ const aa = exhuastive(result);
     reduceMatchers(
       when(is("a"), (v) => "aaa" as const),
       when(is("b"), (v) => "bbb" as const),
-      when(is("c"), (v) => "ccc" as const)
+      when(is("c"), (v) => "ccc" as const),
     ),
   ] as const;
 
@@ -100,14 +77,9 @@ const aa = exhuastive(result);
       >
     >,
     Expect<Equal<GuardedType<any>, never>>,
-    Exclude<typeof input, unknown>
+    Exclude<typeof input, unknown>,
   ];
 
   type MatcherArr_ = typeof matchers;
-  type Tuple = MatcherArrToTuples<MatcherArr_>;
-
-  type Tuple_ = FilterTuple<Tuple, 1 | 2>;
-  type Merged = MergeTuple<Tuple_>;
-  type _Matcher = TupleToMatcher<Merged>;
   type _Matcher2 = Matchers<MatcherArr_>;
 }

@@ -1,19 +1,17 @@
 {
-    "compilerOptions": {
-        "module": "ESNext",
-        "declaration": true,
-        "target": "ESNext",
-        "moduleResolution": "bundler",
-        "strict": true,
-        "outDir": "dist/"
-    },
-    "include": [
-        "src/"
-    ],
-    "exclude": [
-        "tests/",
-        "**/test.ts",
-        "dist/",
-        "examples/"
-    ]
+  "compilerOptions": {
+    "module": "NodeNext",
+    "declaration": true,
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "rootDir": "src/",
+    "outDir": "dist/",
+    "sourceMap": true,
+    "declarationMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/test.ts", "tests/", "examples"]
 }
