@@ -1,0 +1,17 @@
+{
+  "name": "minmatch",
+  "version": "0.0.0",
+  "description": "The modular type safe pattern match",
+  "author": "miyamonz",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "rimraf": "5.0.1",
+    "typescript": "5.2.2",
+    "vitest": "0.34.4"
+  }
+}
