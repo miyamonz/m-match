@@ -1,5 +1,5 @@
 {
-  "name": "minmatch",
+  "name": "m-match",
   "version": "0.0.0",
   "description": "The modular type safe pattern match",
   "author": "miyamonz",
