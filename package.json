@@ -4,6 +4,13 @@
   "description": "The modular type safe pattern match",
   "author": "miyamonz",
   "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "rimraf dist && tsc",
     "prepublishOnly": "npm run build",
