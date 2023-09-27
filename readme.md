@@ -33,8 +33,9 @@ switch (result.type) {
     //                  ^? `this is string. length:${number}` | `this is number. v: ${number}`
     break;
   case "else":
+    // result.else is just the input, but the type is narrowed by passed when matchers.
     console.log(result.else);
-    //                  ^? boolean
+    //                  ^? `boolean` because it's `Exclude<typeof input, string | number>`
     break;
   default:
     result satisfies never;
