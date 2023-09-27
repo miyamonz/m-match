@@ -56,5 +56,5 @@ const result2 = match(
 );
 const unwrapped = exhuastive(result2);
 //     ^? 111 | 222
-// is input is more broad, exhuastive will throw error
+// if input is more broad, exhuastive will throw error
 ```
